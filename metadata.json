@@ -1,0 +1,6 @@
+{
+  "name": "Salgadaria CRM",
+  "description": "Sistema completo de gestão, PDV, controle de caixa, estoque de insumos, monitor de cozinha KDS, relatórios analíticos e cadastro de clientes para salgadarias.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
