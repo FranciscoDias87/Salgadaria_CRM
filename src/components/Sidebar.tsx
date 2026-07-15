@@ -27,9 +27,18 @@ interface SidebarProps {
   onNavigate: (view: string) => void;
   usuarioNome: string;
   onLogout: () => void;
+  isOfflineMode?: boolean;
+  onToggleMode?: () => void;
 }
 
-export default function Sidebar({ currentView, onNavigate, usuarioNome, onLogout }: SidebarProps) {
+export default function Sidebar({
+  currentView,
+  onNavigate,
+  usuarioNome,
+  onLogout,
+  isOfflineMode = false,
+  onToggleMode
+}: SidebarProps) {
   const [isOpen, setIsOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -95,14 +104,36 @@ export default function Sidebar({ currentView, onNavigate, usuarioNome, onLogout
 
         {/* User Info */}
         {isOpen && (
-          <div className="px-5 py-4 bg-orange-600/20 border-b border-orange-400/20 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-orange-400 flex items-center justify-center font-bold text-lg border border-orange-300">
-              {usuarioNome.charAt(0)}
+          <div className="px-5 py-4 bg-orange-600/20 border-b border-orange-400/20 flex flex-col gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-orange-400 flex items-center justify-center font-bold text-lg border border-orange-300">
+                {usuarioNome.charAt(0)}
+              </div>
+              <div className="overflow-hidden">
+                <p className="text-xs text-orange-200">Operador</p>
+                <p className="text-sm font-semibold truncate">{usuarioNome}</p>
+              </div>
             </div>
-            <div className="overflow-hidden">
-              <p className="text-xs text-orange-200">Operador</p>
-              <p className="text-sm font-semibold truncate">{usuarioNome}</p>
-            </div>
+            {isOfflineMode && (
+              <div className="mt-1 flex flex-col gap-1 bg-amber-600/30 border border-amber-400/30 rounded-xl p-2.5">
+                <p className="text-[10px] font-bold text-amber-200 font-mono tracking-wide uppercase">🔴 Modo Demo Offline</p>
+                <p className="text-[9px] text-orange-100 leading-tight">Dados salvos localmente.</p>
+                {onToggleMode && (
+                  <button
+                    onClick={onToggleMode}
+                    className="mt-1.5 w-full py-1 bg-orange-500 hover:bg-orange-600 text-[10px] font-bold text-white rounded-md transition duration-200 cursor-pointer text-center"
+                  >
+                    Ativar Nuvem (Firebase)
+                  </button>
+                )}
+              </div>
+            )}
+            {!isOfflineMode && (
+              <div className="mt-1 bg-emerald-600/30 border border-emerald-400/30 rounded-xl p-2 flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                <p className="text-[10px] font-bold text-emerald-200 font-mono uppercase">🟢 Nuvem Sincronizada</p>
+              </div>
+            )}
           </div>
         )}
 
@@ -189,6 +220,44 @@ export default function Sidebar({ currentView, onNavigate, usuarioNome, onLogout
             >
               <X size={20} />
             </button>
+          </div>
+
+          {/* Mobile User Info & Offline status */}
+          <div className="mb-4 pb-4 border-b border-orange-400/30 flex flex-col gap-2">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-orange-400 flex items-center justify-center font-bold text-sm border border-orange-300">
+                {usuarioNome.charAt(0)}
+              </div>
+              <div>
+                <p className="text-[10px] text-orange-200">Operador</p>
+                <p className="text-xs font-semibold truncate">{usuarioNome}</p>
+              </div>
+            </div>
+            {isOfflineMode && (
+              <div className="flex items-center justify-between bg-amber-600/30 border border-amber-400/30 rounded-xl px-3 py-2 text-[10px]">
+                <div className="flex flex-col">
+                  <span className="font-bold text-amber-200 font-mono">🔴 DEMO OFFLINE</span>
+                  <span className="text-[8px] text-orange-100">Dados locais</span>
+                </div>
+                {onToggleMode && (
+                  <button
+                    onClick={() => {
+                      onToggleMode();
+                      setMobileOpen(false);
+                    }}
+                    className="px-2 py-1 bg-orange-500 hover:bg-orange-600 text-[9px] font-bold text-white rounded-md transition cursor-pointer"
+                  >
+                    Ativar Nuvem
+                  </button>
+                )}
+              </div>
+            )}
+            {!isOfflineMode && (
+              <div className="bg-emerald-600/30 border border-emerald-400/30 rounded-xl px-3 py-2 text-[10px] flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                <span className="font-bold text-emerald-200 font-mono">🟢 NUVEM SINCRONIZADA</span>
+              </div>
+            )}
           </div>
 
           <nav className="flex-1 space-y-1.5 overflow-y-auto">
