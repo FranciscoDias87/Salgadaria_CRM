@@ -1,12 +1,12 @@
 {
-  "projectId": "gen-lang-client-0653304332",
-  "appId": "1:704759621106:web:9d04bcf56fe07c962cf76b",
-  "apiKey": "AIzaSyDv71VYtRxku3_7XsV6pNitMwI6jiBfFAE",
-  "authDomain": "gen-lang-client-0653304332.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-salgadariacrm-e2f258a5-ff10-45c2-a8d1-2c6f0c42d6dd",
-  "storageBucket": "gen-lang-client-0653304332.firebasestorage.app",
-  "messagingSenderId": "704759621106",
-  "measurementId": "",
-  "oAuthClientId": "704759621106-hpus6jikq8uso143utmtc4j0fu24l0lc.apps.googleusercontent.com",
+  "projectId": "salgadaria-crm",
+  "appId": "1:471732996330:web:e50becc32042136231af93",
+  "apiKey": "AIzaSyCpyKxJpf8AMnVzSVnVpc7JnmiE40YwxoU",
+  "authDomain": "salgadaria-crm.firebaseapp.com",
+  "firestoreDatabaseId": "",
+  "storageBucket": "salgadaria-crm.firebasestorage.app",
+  "messagingSenderId": "471732996330",
+  "measurementId": "G-XZ9XTDX2M3",
+  "oAuthClientId": "",
   "recaptchaSiteKey": ""
 }

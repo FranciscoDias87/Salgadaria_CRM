@@ -9,12 +9,13 @@ import { getFirestore } from 'firebase/firestore';
 
 // Configuration loaded directly from the platform's config
 const firebaseConfig = {
-  apiKey: "AIzaSyDv71VYtRxku3_7XsV6pNitMwI6jiBfFAE",
-  authDomain: "gen-lang-client-0653304332.firebaseapp.com",
-  projectId: "gen-lang-client-0653304332",
-  storageBucket: "gen-lang-client-0653304332.firebasestorage.app",
-  messagingSenderId: "704759621106",
-  appId: "1:704759621106:web:9d04bcf56fe07c962cf76b"
+  apiKey: "AIzaSyCpyKxJpf8AMnVzSVnVpc7JnmiE40YwxoU",
+  authDomain: "salgadaria-crm.firebaseapp.com",
+  projectId: "salgadaria-crm",
+  storageBucket: "salgadaria-crm.firebasestorage.app",
+  messagingSenderId: "471732996330",
+  appId: "1:471732996330:web:e50becc32042136231af93",
+  measurementId: "G-XZ9XTDX2M3"
 };
 
 // Initialize Firebase
@@ -23,8 +24,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication
 export const auth = getAuth(app);
 
-// Initialize Firestore with the dedicated database ID provided
-const databaseId = "ai-studio-salgadariacrm-e2f258a5-ff10-45c2-a8d1-2c6f0c42d6dd";
-export const db = getFirestore(app, databaseId);
+// Initialize Firestore (using default database for the custom project)
+export const db = getFirestore(app);
 
 export default app;
